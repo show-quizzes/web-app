@@ -1,0 +1,101 @@
+[
+  {
+    "question": "What kind of pie did Pam want from LaVerne’s Pie Stand?",
+    "answers": [
+      "chocolate",
+      "rhubarb",
+      "peach",
+      "banana cream"
+    ],
+    "answer": 0,
+    "episode": "Work Bus"
+  },
+  {
+    "question": "Michael moves to which city to live with Holly?",
+    "answers": [
+      "denver",
+      "salt lake city",
+      "boulder",
+      "san francisco"
+    ],
+    "answer": 2,
+    "episode": "Goodbye, Michael"
+  },
+  {
+    "question": "Angela has sex with Andy how many times?",
+    "answers": [
+      "once",
+      "twice",
+      "three times",
+      "four times"
+    ],
+    "answer": 1,
+    "episode": "The Duel"
+  },
+  {
+    "question": "Jim worked at which office branch besides Scranton?",
+    "answers": [
+      "utica",
+      "nashua",
+      "syracuse",
+      "stamford"
+    ],
+    "answer": 3,
+    "episode": "Gay Witch Hunt"
+  },
+  {
+    "question": "Holly’s middle name starts with P. What is it?",
+    "answers": [
+      "pamela",
+      "partridge",
+      "peggy",
+      "penelope"
+    ],
+    "answer": 2,
+    "episode": "Ultimatum"
+  },
+  {
+    "question": "What item does Dwight exchange for Jim’s magic beans?",
+    "answers": [
+      "telescope",
+      "candle",
+      "microscope",
+      "baseball bat"
+    ],
+    "answer": 0,
+    "episode": "Garage Sale"
+  },
+  {
+    "question": "What vegetable does Michael make Kevin eat?",
+    "answers": [
+      "carrot",
+      "cucumber",
+      "broccoli",
+      "cauliflower"
+    ],
+    "answer": 2,
+    "episode": "Ultimatum"
+  },
+  {
+    "question": "What vegetable does Dwight farm?",
+    "answers": [
+      "potatoes",
+      "beets",
+      "corn",
+      "cabbage"
+    ],
+    "answer": 1,
+    "episode": "Money"
+  },
+  {
+    "question": "Creed Bratton works in which department?",
+    "answers": [
+      "human resources",
+      "quality assurance",
+      "sales",
+      "accounting"
+    ],
+    "answer": 1,
+    "episode": "Money"
+  }
+]
