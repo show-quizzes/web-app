@@ -1,15 +1,20 @@
 :root {
+  --color-link: #a731ec;
   --color-primary: #0e103f;
 }
 
-html {
-  box-sizing: border-box;
+* {
+  font-weight: 800;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
 }
 
 body {
@@ -24,12 +29,41 @@ body {
   margin: 0;
 }
 
+#__next {
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.navigation a {
+  color: var(--color-link);
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+
 #content-wrapper {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 25px;
+  margin: 0 1rem;
+}
+
+@media (max-width: 660px) {
+  #content-wrapper {
+    margin: 5rem 1rem 0;
+  }
 }
 
 #episode-name {
@@ -40,7 +74,6 @@ body {
 
 #question {
   font-size: 75px;
-  /*font-size: 15px;*/
   letter-spacing: 0.5px;
   line-height: 90px;
   margin-bottom: 40px;
@@ -55,10 +88,11 @@ body {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 660px) {
   #question {
-    font-size: 40px;
-    line-height: 55px;
+    font-size: 2rem;
+    line-height: 2.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -86,7 +120,6 @@ body {
   background-color: #fff;
   border: 1px solid #d7d7d7;
   font-size: 24px;
-  font-weight: 300;
   letter-spacing: 2px;
   margin: 1.5%;
   padding: 20px 20px 20px 30px;
@@ -94,10 +127,11 @@ body {
   width: 47%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 660px) {
   .answer {
     font-size: 20px;
     margin: 1.5% 0;
+    padding: 1rem 1rem 1rem 1.75rem;
     width: 95%;
   }
 }
@@ -123,10 +157,14 @@ body {
   text-align: center;
 }
 
-.try-again {
+.reset {
   text-decoration: underline;
 }
 
-.try-again:hover {
+.reset:hover {
   cursor: pointer;
+}
+
+.progress {
+  letter-spacing: 1.5px;
 }

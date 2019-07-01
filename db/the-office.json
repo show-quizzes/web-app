@@ -1,7 +1,7 @@
 {
   "defaults": {
     "isAnswered": false,
-    "isCorrect": null,
+    "isCorrect": false,
     "response": null,
     "responses": [
       "you ignorant slut. that's incorrect.",
@@ -37,7 +37,7 @@
     {
       "question": "Holly’s middle name starts with P. What is it?",
       "answers": ["pamela", "partridge", "peggy", "penelope"],
-      "answer": 2,
+      "answer": 1,
       "episode": "Ultimatum"
     },
     {

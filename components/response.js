@@ -5,16 +5,22 @@ export default class Response extends React.Component {
 
   render() {
     const { responseText, isAnswered, isCorrect, reset } = this.props;
-    let tryAgain;
+    let $reset;
     let response;
 
     if (isAnswered && isCorrect) {
       response = responseText[1];
+
+      $reset = (
+        <span className="reset" onClick={() => reset('next')}>
+          next question.
+        </span>
+      );
     } else if (isAnswered && !isCorrect) {
       response = responseText[0];
-      tryAgain = (
-        <span className="try-again" onClick={reset}>
-          try again
+      $reset = (
+        <span className="reset" onClick={() => reset('reset')}>
+          try again.
         </span>
       );
     } else {
@@ -23,7 +29,7 @@ export default class Response extends React.Component {
 
     return (
       <div className="response">
-        {response} {tryAgain}
+        {response} {$reset}
       </div>
     );
   }

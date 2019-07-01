@@ -1,4 +1,4 @@
 const withCSS = require('@zeit/next-css');
 module.exports = withCSS({
-  'postcss-css-variables': {}
+  target: 'serverless'
 });

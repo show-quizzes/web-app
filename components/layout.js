@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 export default ({ children, title = 'Show Quizzes' }) => (
-  <div>
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -12,7 +12,7 @@ export default ({ children, title = 'Show Quizzes' }) => (
         rel="stylesheet"
       />
     </Head>
-    <nav>
+    <nav className="navigation">
       <Link href="/">
         <a>Home</a>
       </Link>{' '}
@@ -23,5 +23,5 @@ export default ({ children, title = 'Show Quizzes' }) => (
     </nav>
 
     <main id="content-wrapper">{children}</main>
-  </div>
+  </>
 );
