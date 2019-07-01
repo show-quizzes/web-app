@@ -10,11 +10,14 @@ import data from '../db/the-office.json';
 
 export default class TheOffice extends React.Component {
   state = {
+    correctAnswerId: this.props.currQuesData.answer,
+    classes: '',
     currQuesData: this.props.currQuesData,
     data,
     isAnswered: this.props.currQuesData.isAnswered,
     isCorrect: this.props.currQuesData.isCorrect,
-    responses: this.props.currQuesData.responses
+    responses: this.props.currQuesData.responses,
+    selectedAnswerId: null
   };
 
   static async getInitialProps() {
@@ -23,10 +26,15 @@ export default class TheOffice extends React.Component {
     };
   }
 
-  handleAnswer = (answered, correct) => {
+  handleAnswer = (answered, index) => {
     this.setState({
+      classes:
+        index === this.state.correctAnswerId
+          ? 'answer correct'
+          : 'answer incorrect',
       isAnswered: answered,
-      isCorrect: correct
+      isCorrect: index === this.state.correctAnswerId ? true : false,
+      selectedAnswerId: index
     });
   };
 
@@ -38,8 +46,15 @@ export default class TheOffice extends React.Component {
   };
 
   render() {
-    const { currQuesData, isAnswered, isCorrect, responses } = this.state;
-    console.log(currQuesData);
+    const {
+      classes,
+      currQuesData,
+      isAnswered,
+      isCorrect,
+      responses,
+      selectedAnswerId
+    } = this.state;
+    // console.log(currQuesData);
 
     return (
       <Layout title={'The Office | Show Quizzes'}>
@@ -47,9 +62,10 @@ export default class TheOffice extends React.Component {
         <Question {...currQuesData} />
         <Answers
           {...currQuesData}
+          classes={classes}
           handleAnswer={this.handleAnswer}
           isAnswered={isAnswered}
-          isCorrect={isCorrect}
+          selectedAnswerId={selectedAnswerId}
         />
         <Response
           isAnswered={isAnswered}

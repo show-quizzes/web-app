@@ -1,30 +1,29 @@
-import { useState } from 'react';
-
 export default ({
-  correctAnswerId,
+  classes,
   handleAnswer,
   index,
   isAnswered,
   letter,
+  selectedAnswerId,
   text
 }) => {
-  const [classes, setClasses] = useState('answer');
-
+  let classNames = '';
   const handleSelection = index => {
-    if (index === correctAnswerId) {
-      setClasses('answer correct');
-      handleAnswer(true, true);
-    } else {
-      setClasses('answer incorrect');
-      handleAnswer(true, false);
-    }
+    handleAnswer(true, index);
   };
 
+  if (isAnswered) {
+    if (index === selectedAnswerId) {
+      classNames = classes;
+    } else {
+      classNames = 'answer';
+    }
+  } else {
+    classNames = 'answer';
+  }
+
   return (
-    <div
-      className={isAnswered ? classes : 'answer'}
-      onClick={() => handleSelection(index)}
-    >
+    <div className={classNames} onClick={() => handleSelection(index)}>
       {letter}. {text}
     </div>
   );
