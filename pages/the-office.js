@@ -6,13 +6,14 @@ import Layout from '../components/layout';
 import Progress from '../components/progress';
 import Question from '../components/question';
 import Response from '../components/response';
+import Results from '../components/results';
 
 import data from '../db/the-office.json';
 
 export default class TheOffice extends React.Component {
   state = {
-    correctAnswerId: this.props.currQuesData.answer,
     classes: '',
+    correctAnswerId: this.props.currQuesData.answer,
     currQuesData: this.props.currQuesData,
     currQuesNum: this.props.currQuesNum,
     data,
@@ -20,7 +21,10 @@ export default class TheOffice extends React.Component {
     isAnswered: this.props.currQuesData.isAnswered,
     isCorrect: this.props.currQuesData.isCorrect,
     numQuestions: this.props.numQuestions,
+    numRightAnswers: null,
     responses: this.props.currQuesData.responses,
+    scoreAsPct: null,
+    scores: {},
     selectedAnswerId: null
   };
 
@@ -42,6 +46,8 @@ export default class TheOffice extends React.Component {
       isCorrect: index === this.state.correctAnswerId ? true : false,
       selectedAnswerId: index
     });
+
+    this.aggregateScore(index);
   };
 
   handleReset = type => {
@@ -58,6 +64,7 @@ export default class TheOffice extends React.Component {
   loadNextQuestion = () => {
     if (this.state.currQuesNum === this.state.numQuestions - 1) {
       this.setState({ gameOver: true });
+      this.computeFinalScore();
       return;
     }
 
@@ -65,6 +72,32 @@ export default class TheOffice extends React.Component {
       state => ({ currQuesNum: state.currQuesNum + 1 }),
       this.updateData
     );
+  };
+
+  aggregateScore = answerIndex => {
+    const { correctAnswerId, currQuesNum, scores } = this.state;
+    const correctAnswer = answerIndex === correctAnswerId;
+
+    if (!scores[currQuesNum]) {
+      if (correctAnswer) {
+        scores[currQuesNum] = 'correct';
+      } else {
+        scores[currQuesNum] = 'incorrect';
+      }
+    }
+  };
+
+  computeFinalScore = () => {
+    const numRightAnswers = Object.values(this.state.scores).filter(score => {
+      return score === 'correct';
+    }).length;
+
+    this.setState({
+      scoreAsPct: ((numRightAnswers / this.state.numQuestions) * 100).toFixed(
+        1
+      ),
+      numRightAnswers
+    });
   };
 
   updateData() {
@@ -86,7 +119,9 @@ export default class TheOffice extends React.Component {
       isAnswered,
       isCorrect,
       numQuestions,
+      numRightAnswers,
       responses,
+      scoreAsPct,
       selectedAnswerId
     } = this.state;
 
@@ -112,10 +147,11 @@ export default class TheOffice extends React.Component {
             <Progress currQuesNum={currQuesNum} numQuestions={numQuestions} />
           </>
         ) : (
-          <div>
-            The game is now over. Thank you for playing! (Stats of how you did
-            to come...)
-          </div>
+          <Results
+            numRightAnswers={numRightAnswers}
+            numQuestions={numQuestions}
+            scoreAsPct={scoreAsPct}
+          />
         )}
       </Layout>
     );
